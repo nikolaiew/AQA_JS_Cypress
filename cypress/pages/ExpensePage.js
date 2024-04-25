@@ -35,7 +35,7 @@ export class ExpensePage extends BasePage{
         return cy.xpath('//input[@id="addExpenseLiters"]')
     }
 
-    addExpenseTotalCost() {
+    addExpenseCost() {
         return cy.xpath('//input[@id="addExpenseTotalCost"]')
     }
 
@@ -46,4 +46,33 @@ export class ExpensePage extends BasePage{
     addExpenseAddButton() {
         return cy.xpath('//button[text()="Add"]')
     }
+
+    // Expenses_table
+    line1Mileage() {
+        return cy.xpath('//tr[1]/td[2]')
+    }
+
+    line1Liters() {
+        return cy.xpath('//tr[1]/td[3]')
+    }
+
+    line1Cost() {
+        return cy.xpath('//tr[1]/td[4]')
+    }
+
+    line1Delete() {
+        return cy.xpath('//tr[1]//button[@class="btn btn-delete"]')
+    }
+
+    line1DeleteConfirmation() {
+        return cy.xpath('//button[text()="Remove"]')
+    }
+
+}
+
+export const expensePage = new ExpensePage();
+export const expense = {
+    mileage: 60,
+    liters: 10,
+    cost: 20,
 }

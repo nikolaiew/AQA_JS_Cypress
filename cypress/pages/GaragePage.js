@@ -2,6 +2,14 @@ import {BasePage} from "./BasePage";
 
 export class GaragePage extends BasePage{
 
+    card1CarName() {
+        return cy.xpath('//li[1]//p[@class="car_name h2"]')
+    }
+
+    card1Mileage() {
+        return cy.xpath('//li[1]//input[@name="miles"]')
+    }
+
     // AddCar_modal
     addCarButton() {
         return cy.xpath('//button[text()="Add car"]')
@@ -12,6 +20,7 @@ export class GaragePage extends BasePage{
     }
 
     addCarBrand() {
+        // return cy.get("#addCarBrand")
         return cy.xpath('//select[@id="addCarBrand"]')
     }
 
@@ -54,7 +63,8 @@ export class GaragePage extends BasePage{
     }
 
     editCarBrand() {
-        return cy.xpath('//select[@id="addCarBrand"]')
+        return cy.get("#addCarBrand")
+        // return cy.xpath('//select[@id="addCarBrand"]')
     }
 
     editCarModel() {
@@ -84,4 +94,32 @@ export class GaragePage extends BasePage{
     editCarSaveButton() {
         return cy.xpath('//button[text()="Save"]')
     }
+
+    fulfillingAddCarForm() {
+
+    }
+
+    editCarRemoveAcceptButton() {
+        return cy.xpath('//button[text()="Remove"]')
+    }
+
+    editCarRemoveCancelButton() {
+        return cy.xpath('//button[text()="Cancel"]')
+    }
 }
+
+export const garagePage = new GaragePage();
+export const car = {
+    brand: 'Ford',
+    model: 'Fusion',
+    mileage: 100
+}
+
+// export const car = carGen();  // генератор машин
+//
+// export function carGen() {
+//     const vehicle = [
+//         {'Audi':['TT','R8','Q7','A6','A8']},
+//         {'BMW':['3','5','X5','X6','Z3']},
+//     ]
+// }

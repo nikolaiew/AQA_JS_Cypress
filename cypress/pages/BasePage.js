@@ -1,7 +1,24 @@
 export class BasePage {
     // homePage
+    signInButton() {
+        return cy.xpath('//button[text()="Sign In"]')
+    }
+
     signUpButton() {
-        return cy.xpath('//button[@class="hero-descriptor_btn btn btn-primary"]')
+        return cy.xpath('//button[text()="Sign up"]')
+    }
+
+    // homePage_Sign_In_Form
+    signInEmail() {
+        return cy.xpath('//input[@id="signinEmail"]')
+    }
+
+    signInPassword() {
+        return cy.xpath('//input[@name="password"]')
+    }
+
+    loginButton() {
+        return cy.xpath('//button[text()="Login"]')
     }
 
     // homePage_Sign_Up_Form
@@ -92,7 +109,7 @@ export class BasePage {
         return cy.xpath('//a[@routerlink="garage"]');
     }
 
-    fuelButton() {
+    expenseButton() {
         return cy.xpath('//a[@routerlink="expenses"]');
     }
 
@@ -130,9 +147,34 @@ export class BasePage {
         this.signUpRepeatPassword().type(user.password).should('have.value', user.password);
     }
 
+    fulfillingSignInForm(user) {
+        this.signInEmail().type(user.email).should('have.value', user.email);
+        this.signInPassword().type(user.password).should('have.value', user.password);
+    }
+
     registerValidation(user) {
         this.garageUrlCheck();
         this.profileButton().click();
         this.profileName().should('contain', user.name + ' ' + user.lastName)
     }
 }
+
+export const basePage = new BasePage();
+export const baseUrl = 'qauto2.forstudy.space/'
+export const user = userGen()  // генеруємо дані юзера
+
+export function getRandom(min, max) { // функція генерації числа від min до max включно
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+export function userGen() {  // функція генерації даних юзера (як варіант)
+    const names = ['Noah', 'Liam', 'Mason', 'James', 'Jacob', 'Ethan', 'John', 'Sten', 'Tim', 'Bill']
+    const lastNames = ['Smith', 'Johnson', 'Williams', 'Jones', 'Brown', 'Davis', 'Miller', 'Wilson', 'Moore', 'Taylor']
+    const user = {}
+    user.name = names[getRandom(0,9)]
+    user.lastName = lastNames[getRandom(0,9)]
+    user.email = user.name.toLowerCase() + '_' + user.lastName.toLowerCase() + getRandom(10,99) + '@testmail.com'
+    user.password = user.name + getRandom(10000,99999)
+    return user
+}
+
