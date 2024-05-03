@@ -1,14 +1,15 @@
 {
+  "devDependencies": {
+    "cypress": "^13.7.3",
+    "cypress-xpath": "^2.0.1"
+  },
   "name": "aqa_js_cypress",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "cypress.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "cypress": "^13.7.3"
-  }
 }
