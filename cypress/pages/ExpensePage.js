@@ -48,6 +48,10 @@ export class ExpensePage extends BasePage{
     }
 
     // Expenses_table
+    line1Date() {
+        return cy.xpath('//tr[1]/td[1]')
+    }
+
     line1Mileage() {
         return cy.xpath('//tr[1]/td[2]')
     }

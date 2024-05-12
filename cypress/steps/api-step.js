@@ -1,4 +1,5 @@
-
+import {existingUser} from "../pages/BasePage";
+import {expense} from "../pages/GaragePage"
 export class API {
     signIn(user) {
         return cy.request({
@@ -9,11 +10,11 @@ export class API {
                 "Content-Type": "application/json",
             },
             body: {
-                "email": "john_brown39@testmail.com",
-                "password": "John40611",
+                "email": user.email,
+                "password": user.password,
                 "remember": false
             }
-                }).as('login');
+                })//.as('login');
     }
 
     signUp(user) {
@@ -44,6 +45,42 @@ export class API {
         return cy.request({
             method: 'GET',
             url: '/api/cars',
+        })
+    }
+
+    addNewCar() {
+        return cy.request({
+            method: 'POST',
+            url: '/api/cars',
+            // headers: {
+            //     "accept": "application/json",
+            //     "Content-Type": "application/json",
+            // },
+            body: {
+                "carBrandId": 1,
+                "carModelId": 1,
+                "mileage": 77
+            }
+        })
+    }
+
+    addExpenses(carId) {
+        // cy.log(carId)
+        return cy.request({
+            method: 'POST',
+            url: '/api/expenses',
+            headers: {
+                "accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: {
+                "carId": carId,
+                "reportedAt": expense.reportedAt,
+                "mileage": expense.mileage,
+                "liters": expense.liters,
+                "totalCost": expense.totalCost,
+                "forceMileage": expense.forceMileage
+            }
         })
     }
 }

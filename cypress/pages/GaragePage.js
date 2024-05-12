@@ -114,6 +114,14 @@ export const car = {
     model: 'Fusion',
     mileage: 100
 }
+export const expense = {
+    carId: undefined,
+    reportedAt: "2024-05-12",
+    mileage: 111,
+    liters: 11,
+    totalCost: 11,
+    forceMileage: false
+}
 
 // export const car = carGen();  // генератор машин
 //

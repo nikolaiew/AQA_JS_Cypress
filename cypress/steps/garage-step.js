@@ -4,10 +4,8 @@ import {GeneralStep} from "./general-step";
 export class GarageStep extends GeneralStep{
     addNewCar(car) {
         garagePage.addCarButton().click();
-        garagePage.addCarBrand().select(car.brand)//.should('have.text',car.brand); ?? чому не працює перевірка з should ??
-        // garagePage.addCarBrand().select(2).should("have.value","2: 3"); так should працює
-        garagePage.addCarModel().select(car.model)//.should('have.text',car.model); ?? чому не працює перевірка з should ??
-        // garagePage.addCarModel().select(2).should("have.value","7: 13"); так should працює
+        garagePage.addCarBrand().select(car.brand)
+        garagePage.addCarModel().select(car.model)
         garagePage.addCarMileage().type(car.mileage);
         garagePage.addCarAddButton().click();
     }
