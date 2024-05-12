@@ -162,6 +162,10 @@ export class BasePage {
 export const basePage = new BasePage();
 export const baseUrl = 'qauto2.forstudy.space/'
 export const user = userGen()  // генеруємо дані юзера
+export const existingUser = {
+    email : 'john_brown39@testmail.com',
+    password : 'John40611',
+}
 
 export function getRandom(min, max) { // функція генерації числа від min до max включно
     return Math.floor(Math.random() * (max - min + 1) + min)
